@@ -2,8 +2,6 @@
 # swagger2
 swagger2.package: pe.com.claro
 
-
-
 server:
     port: 9000
     contextPath:
