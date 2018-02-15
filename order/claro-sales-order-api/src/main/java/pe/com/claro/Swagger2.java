@@ -14,13 +14,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * Swagger2的配置类
- *
- * @author xubin.
- * @create 2017-04-08
- */
-
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
@@ -30,7 +23,7 @@ public class Swagger2 {
     @Value("${swagger2.package}")
     private String basePackage;
 
-    @Value("${dubbox.application.name}")
+    @Value("${application.name}")
     private String title;
 
     @Bean
@@ -44,13 +37,13 @@ public class Swagger2 {
     }
 
     private ApiInfo apiInfo() {
-        Contact contact=new Contact("Binux",
+      /*  Contact contact=new Contact("Binux",
                 "http://git.oschina.net/binu/xbin-store","xu.binux@gmail.com");
-
+*/
         return new ApiInfoBuilder()
-                .title(title + " RESTful APIs")
-                .description(title + " RESTful API详情!")
-                .contact(contact)
+                .title(title + " RESTful API")
+                ///.description(title + " RESTful API")
+                //.contact(contact)
                 .version("1.0")
                 .build();
     }

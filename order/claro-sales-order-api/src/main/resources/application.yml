@@ -19,4 +19,4 @@ spring:
       format_sql: true
 
 entity.manager.packagesToScan: pe.com.claro
-dubbox.application.name: Restfull
+application.name: claro-sales-order

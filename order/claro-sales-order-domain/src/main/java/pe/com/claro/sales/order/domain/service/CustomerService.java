@@ -1,13 +1,17 @@
 package pe.com.claro.sales.order.domain.service;
 
+
+
+import pe.com.claro.common.resource.exception.EntityNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.com.claro.common.resource.exception.NotFoundException;
 import pe.com.claro.sales.order.domain.repository.CustomerRepository;
 import pe.com.claro.sales.order.model.Customer;
+
 
 @Service
 public class CustomerService {
@@ -17,14 +21,15 @@ public class CustomerService {
 
 	// @Cacheable(value = CACHE_NAME_TAGS, key =
 	// "#post.id.toString().concat('-tags')")
-	public Customer getPostCustomer(Long customerId) {
+	public Customer getPostCustomer(Long customerId) throws EntityNotFoundException {
 
 		logger.debug("Get post " + customerId);
        
 		Customer customer = customerRepository.findOne(customerId);
 
 		if (customer == null) {
-			throw new NotFoundException("Post with id " + customer + " is not found.");
+			//throw new NotFoundException("Post with id " + customer + " is not found.");
+			 throw new EntityNotFoundException(Customer.class, "id", customerId.toString());
 		}
 
 		return customer;
